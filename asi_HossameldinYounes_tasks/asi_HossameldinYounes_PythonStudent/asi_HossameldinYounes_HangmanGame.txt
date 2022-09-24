@@ -1,0 +1,43 @@
+wordbank = ["vortex","software", "electrical", "mechanical", "alexandria", "cairo", "mena"]
+wrongcount = 0
+correccount = 0
+guessedletters = ""
+worno = input("Enter a number between 1 and 8: ")
+
+while int(worno) != 1 and int(worno) != 2 and int(worno) != 3 and int(worno) != 4 and int(worno) != 5 and int(worno) != 6:
+    worno = input("Enter a number between 0 and 6: ")
+
+
+word = wordbank[int(worno)]
+lettercount = 0
+uniques = ""
+for let in word:
+    if let in uniques:
+        continue
+    else:
+        lettercount = lettercount + 1
+        uniques = uniques + let
+
+
+
+while wrongcount < 8:
+    if correccount >= lettercount:
+        print("Correct! The word is .... " + word)
+        break
+    else:
+        letter = input("Enter a letter: ")
+        if letter == "" or letter in guessedletters:
+            print("Invalid letter" )
+        else:
+            if letter in word:
+                print("Correct!" )
+                correccount = correccount + 1
+                guessedletters = guessedletters + letter
+            
+            else:
+                print("Wrong!" )
+                wrongcount = wrongcount + 1
+                guessedletters = guessedletters + letter
+
+if wrongcount >= 8:
+    print("You lose! You are out of chances! ")
